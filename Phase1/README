@@ -1,0 +1,16 @@
+// Run the below scala code in the spark-shell after including the geospark jar
+
+import org.apache.spark.SparkContext
+import org.datasyslab.geospark.spatialOperator.{JoinQuery, KNNQuery, RangeQuery}
+import org.datasyslab.geospark.spatialRDD.{PointRDD, RectangleRDD}
+import com.vividsolutions.jts.geom.{Coordinate, Envelope, GeometryFactory, Point}
+import java.util.{HashSet, List}
+
+import org.apache.spark.storage.StorageLevel
+
+val pointsFile = "hdfs://master:54310/user/hduser/arealm.csv"
+
+val rectanglesFile = "hdfs://master:54310/user/hduser/zcta510.csv"
+val pointRDD = new PointRDD(sc, pointsFile, 0, "csv", 10)
+val rectangleRDD = new RectangleRDD(sc, rectanglesFile,0, "csv")
+val result4 = JoinQuery.SpatialJoinQueryCartesian(sc, pointRDD,rectangleRDD).count()

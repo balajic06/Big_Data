@@ -1,0 +1,20 @@
+	Description:
+
+	This phase will focus on applying spatial statistics to spatio-temporal big data in order to
+identify statistically significant spatial hot spots using Apache Spark. The topic of this phase is
+from ACM SIGSPATIAL GISCUP 2016.
+The Problem Definition page is here: http://sigspatial2016.sigspatial.org/giscup2016/problem
+The Submit Format page is here: http://sigspatial2016.sigspatial.org/giscup2016/submit
+
+	Special Requirement (Different from the GISCUP):
+
+	As stated in the Problem Definition page, in this phase, you are asked to implement a Spark
+program to calculate the Getis-Ord statistic of NYC Taxi Trip datasets.
+To reduce the computation power need:
+1. You only need to take the data of 2015 January Yellow Taxi (~1.8 GB in total).
+2. Each cell unit size is 0.01 * 0.01 in terms of latitude and longitude degrees.
+3. You should use 1 day as the Time Step Size.
+4. You only need to consider Pick-up Location. You can ignore the Drop-off Location.
+5. The code should be written in Scala or Java and be able to generate a executable Jar package.
+6. You may use GeoSpark Maven Coordinates to call GeoSpark API and help your coding. You
+even can use GeoSpark source code as a starting point and do some changes on it.

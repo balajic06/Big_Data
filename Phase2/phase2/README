@@ -1,0 +1,23 @@
+## Compiling the code:
+# Code is compiled using SBT and SBT Assembly to generate the jar.
+
+## Prerequisites
+#  JDK 1.8
+#  Scala SDK 2.11.8+
+#  Spark 2.0.1 libraries loaded in your $HOME/.m2 repository
+#  SBT 0.13.13
+
+## Compile command -> from phase2_source run:
+ sbt assembly
+
+## Running spark-submit
+ spark-submit --master <SPARK_URL> --class io.purush.spark.giscup.script.CellScript phase2.jar
+
+## In case you want to compile and then run the jar do this from the phase2_source
+ sbt assembly
+# JAR built will be in ./target/scala-2.11/scala_code-assembly-0.1.jar
+# Please add your data location in <HDFS_LOCATION> and output file location in <OUTPUT_FILE>
+# This is what we used
+ spark-submit --master spark://master:7077 --class io.purush.spark.giscup.script.CellScript target/scala-2.11/scala_code-assembly-0.1.jar hdfs://localhost:54310/inputBig results.csv
+
+# results file will be generated as "results.csv" in the same folder you run the spark-submit
